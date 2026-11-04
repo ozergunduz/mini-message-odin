@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mini Message Board</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+
+  <main class="container">
+    <h1>Mini Message Board</h1>
+
+    <a href="/new" class="btn">+ New Message</a>
+
+    <h2>Messages</h2>
+
+    <% messages.forEach((message, index) => { %>
+      <article class="message">
+        <h3><%= message.user %></h3>
+        <p><%= message.text %></p>
+        <small><%= message.added.toLocaleString() %></small>
+
+        <form method="POST" action="/delete/<%= index %>">
+          <button class="delete-btn" type="submit">
+            Delete
+          </button>
+        </form>
+      </article>
+    <% }); %>
+  </main>
+
+</body>
+</html>
